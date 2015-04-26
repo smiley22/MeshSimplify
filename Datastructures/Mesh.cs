@@ -98,10 +98,10 @@ namespace MeshSimplify {
 		/// </returns>
 		IDictionary<int, ISet<Triangle>> ComputeIncidentFaces() {
 			var incidentFaces = new Dictionary<int, ISet<Triangle>>();
+			for (int i = 0; i < Vertices.Count; i++)
+				incidentFaces.Add(i, new HashSet<Triangle>());
 			foreach (var f in Faces) {
 				for (int c = 0; c < f.Indices.Length; c++) {
-					if (!incidentFaces.ContainsKey(f.Indices[c]))
-						incidentFaces[f.Indices[c]] = new HashSet<Triangle>();
 					incidentFaces[f.Indices[c]].Add(f);
 				}
 			}

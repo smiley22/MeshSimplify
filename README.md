@@ -15,9 +15,17 @@ At its most basic level `MeshSimplify` expects the desired target number of face
 
     MeshSimplify -n 1000 bunny.obj
 
-By default, MeshSimplify produces an output file with the same name as the input file suffixed by \_out, so the above example would produce the simplified variant of the input file as bunny\_out.obj. To specify a different output location, you can use the `-o` option:
+By default, `MeshSimplify` produces an output file with the same name as the input file suffixed by \_out, so the above example would produce the simplified variant of the input file as bunny\_out.obj. To specify a different output location, you can use the `-o` option:
 
     MeshSimplify -n 1000 -o output.obj bunny.obj
+
+In order to have `MeshSimplify` add vertex-split records to the resulting output file and produce a progressive-mesh, you can specify the `-p` option:
+
+    MeshSimplify -n 1000 -p -o pm-bunny.obj bunny.obj
+	
+Finally, `MeshSimplify` is also able to restore the original mesh from a progressive-mesh representation or to expand the progressive-mesh to an arbitrary number of faces by specifying the `--restore-mesh` option. So, to expand the previously created progressive-mesh to a polycount of 20000, you could use:
+
+    MeshSimplify -n 20000 --restore-mesh pm-bunny.obj
 
 For a detailed description of all available options, please refer to the next section.
 

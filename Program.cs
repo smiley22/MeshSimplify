@@ -121,8 +121,5 @@ namespace MeshSimplify {
 			Console.WriteLine("error: " + format, arg);
 			Environment.Exit(1);
 		}
-
-		static void ReverseMesh(Mesh m, int n, bool verbose) {
-		}
 	}
 }

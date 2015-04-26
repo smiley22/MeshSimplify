@@ -76,7 +76,7 @@ namespace MeshSimplify {
 						foreach (var s in mesh.Splits) {
 							// vsplit als Kommentar schreiben, so daß die Datei auch weiterhin
 							// eine gültige .obj Datei bleibt.
-							sw.Write("#vsplit {0} {{{1} {2} {3}}} {{{4} {5} {6}}} {{ ", s.S,
+							sw.Write("#vsplit {0} {{{1} {2} {3}}} {{{4} {5} {6}}} {{ ", s.S + 1,
 								s.SPosition.X.ToString(CultureInfo.InvariantCulture),
 								s.SPosition.Y.ToString(CultureInfo.InvariantCulture),
 								s.SPosition.Z.ToString(CultureInfo.InvariantCulture),
@@ -182,7 +182,7 @@ namespace MeshSimplify {
 			if (!m.Success)
 				throw new InvalidOperationException("Invalid vsplit: " + l);
 			var s = new VertexSplit() {
-				S = int.Parse(m.Groups[1].Value),
+				S = int.Parse(m.Groups[1].Value) - 1,
 				SPosition = ParseVector(m.Groups[2].Value),
 				TPosition = ParseVector(m.Groups[3].Value)
 			};
